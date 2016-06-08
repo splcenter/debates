@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Custom legend</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+<style>
+  body {
+  margin: 0;
+  padding: 0;
+}
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+
+
+</head>
+<body>
+<style>
+  .legend label,
+  .legend span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 20%;
+    text-align: center;
+    font-size: 9px;
+    color: #808080;
+  }
+  .my-legend .legend-title {
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 90%;
+}
+.my-legend .legend-scale ul {
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+  float: left;
+  list-style: none;
+}
+.my-legend .legend-scale ul li {
+  font-size: 80%;
+  list-style: none;
+  margin-left: 0;
+  line-height: 18px;
+  margin-bottom: 2px;
+}
+.my-legend ul.legend-labels li span {
+  display: block;
+  float: left;
+  height: 16px;
+  width: 30px;
+  margin-right: 5px;
+  margin-left: 0;
+  border: 1px solid #999;
+}
+.my-legend a {
+  color: #777;
+}
+</style>
+
+<!-- Set the display of this container to none so we can
+     add it programmatically to `legendControl` -->
+<div id='legend' style='display:none;'>
+  <div class='my-legend'>
+    <div class='legend-title'>Have these debates been resolved?</div>
+    <div class='legend-scale'>
+      <ul class='legend-labels'>
+        <li><span style='background:#5bae67;'></span>Yes</li>
+        <li><span style='background:#bd2d20;'></span>No</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id='map'></div>
+
+
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1Ijoic3BsY2VudGVyIiwiYSI6IjRlZDU3ZDliZGY4NmZiNTY0YTllYzhjNWE0N2E4NDFlIn0.W9OnMv11AAgnR3O4QJxXKg';
+var map = L.mapbox.map('map', 'splcenter.aeb065bb');
+map.legendControl.addLegend(document.getElementById('legend').innerHTML);
+</script>
+</body>
+</html>
